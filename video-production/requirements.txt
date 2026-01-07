@@ -1,0 +1,19 @@
+# Video Production Toolkit Requirements
+
+# Image processing for thumbnails
+Pillow>=10.0.0
+
+# Configuration file handling
+PyYAML>=6.0
+
+# Optional: Progress bars for batch processing
+tqdm>=4.65.0
+
+# Optional: Color output for terminal
+colorama>=0.4.6
+
+# Note: FFmpeg must be installed separately and available in PATH
+# Install FFmpeg:
+#   Windows: choco install ffmpeg
+#   macOS: brew install ffmpeg
+#   Linux: sudo apt-get install ffmpeg

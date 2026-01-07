@@ -1,0 +1,144 @@
+# Video Production Configuration
+
+project:
+  name: "Tutorial Series"
+  author: "Your Name"
+  channel: "Your Channel Name"
+
+# Directory Configuration
+directories:
+  raw_footage: "./raw-footage"
+  processed_videos: "./processed-videos"
+  thumbnails: "./thumbnails"
+  metadata: "./metadata"
+  assets: "./assets"
+  tutorials: "./tutorials"
+
+# Video Processing Settings
+video:
+  # Compression settings
+  compression:
+    crf: 23  # 18-28 (lower = better quality)
+    preset: "medium"  # ultrafast, fast, medium, slow, veryslow
+    audio_bitrate: "128k"
+
+  # Output formats
+  formats:
+    - name: "1080p"
+      width: 1920
+      height: 1080
+    - name: "720p"
+      width: 1280
+      height: 720
+
+  # Intro/Outro
+  intro_file: "./assets/intro.mp4"
+  outro_file: "./assets/outro.mp4"
+
+  # Watermark
+  watermark:
+    enabled: true
+    file: "./assets/overlays/watermark.png"
+    position: "bottom-right"  # top-left, top-right, bottom-left, bottom-right
+    scale: 0.15
+
+# Thumbnail Settings
+thumbnail:
+  width: 1280
+  height: 720
+  quality: 95
+
+  # Text overlay
+  title:
+    font_size: 80
+    position: "bottom"  # top, bottom, center
+    bg_color: [0, 0, 0, 180]  # RGBA
+    text_color: [255, 255, 255]  # RGB
+
+  # Branding
+  logo:
+    enabled: true
+    file: "./assets/overlays/logo.png"
+    position: "bottom-right"
+    scale: 0.15
+
+  # Effects
+  effects:
+    brightness: 1.0
+    contrast: 1.1
+    saturation: 1.1
+
+# YouTube Metadata Settings
+youtube:
+  # Default settings
+  defaults:
+    category: "Education"
+    privacy_status: "public"  # public, unlisted, private
+    made_for_kids: false
+    embeddable: true
+    license: "youtube"  # youtube or creativeCommon
+    language: "en"
+
+  # Default tags (added to all videos)
+  default_tags:
+    - "tutorial"
+    - "programming"
+    - "coding"
+    - "education"
+
+  # Standard links (added to all videos)
+  standard_links:
+    - label: "GitHub Repository"
+      url: "https://github.com/yourusername/repo"
+    - label: "Website"
+      url: "https://yourwebsite.com"
+    - label: "Discord Community"
+      url: "https://discord.gg/yourcommunity"
+
+  # Playlist configuration
+  playlists:
+    - name: "Tutorial Series"
+      id: null  # Set your playlist ID here
+    - name: "Quick Tips"
+      id: null
+
+# Batch Processing Settings
+batch:
+  # Process videos in parallel
+  parallel_processing: false
+  max_workers: 2
+
+  # Auto-generate thumbnails
+  auto_thumbnail: true
+  thumbnail_timestamp: "00:00:05"
+
+  # Auto-generate metadata
+  auto_metadata: true
+
+# Template Settings
+templates:
+  tutorial:
+    title_format: "{series} #{episode}: {title}"
+    description_template: |
+      In this tutorial, we'll {description}
+
+      Perfect for beginners and intermediate developers!
+
+  quick_tip:
+    title_format: "Quick Tip: {title}"
+    description_template: |
+      Quick tip on {topic}
+
+      ⏱️ Short and to the point!
+
+# Quality Control
+quality:
+  # Minimum video resolution
+  min_width: 1280
+  min_height: 720
+
+  # Minimum video duration (seconds)
+  min_duration: 60
+
+  # Maximum file size (MB)
+  max_file_size: 2000

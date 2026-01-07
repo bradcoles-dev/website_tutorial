@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Professional Portfolio with Claude AI</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // Import icons from lucide
+    const {
+      ChevronLeft,
+      ChevronRight,
+      Home,
+      Code,
+      Sparkles,
+      Rocket,
+      Settings,
+      Check,
+      Github,
+      Globe,
+      MessageSquare,
+      Lightbulb,
+      AlertCircle,
+      Monitor,
+      Smartphone
+    } = lucide;
+
+    function PortfolioTutorial() {
+      const [currentSlide, setCurrentSlide] = useState(0);
+      const [progress, setProgress] = useState(0);
+
+      useEffect(() => {
+        setProgress((currentSlide / (slides.length - 1)) * 100);
+      }, [currentSlide]);
+
+      // Keyboard navigation
+      useEffect(() => {
+        const handleKeyPress = (e) => {
+          if (e.key === 'ArrowRight') nextSlide();
+          if (e.key === 'ArrowLeft') prevSlide();
+        };
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+      }, [currentSlide]);
+
+      const slides = [
+        {
+          id: 'intro',
+          title: 'Building a Professional Portfolio',
+          subtitle: 'With Claude AI',
+          type: 'cover',
+          icon: React.createElement(Sparkles, { className: "w-24 h-24" }),
+          content: (
+            <div className="text-center space-y-6">
+              <p className="text-2xl font-light">From Idea to Deployment</p>
+              <p className="text-lg opacity-80">No coding experience required</p>
+              <div className="flex justify-center gap-4 mt-8">
+                <div className="bg-white/10 backdrop-blur px-6 py-3 rounded-full">
+                  <span className="text-sm">⏱️ 12-15 minutes</span>
+                </div>
+                <div className="bg-white/10 backdrop-blur px-6 py-3 rounded-full">
+                  <span className="text-sm">🎯 Beginner Friendly</span>
+                </div>
+              </div>
+            </div>
+          )
+        },
+        {
+          id: 'planning',
+          title: 'Step 1: Planning',
+          subtitle: 'Foundation is Everything',
+          type: 'content',
+          icon: React.createElement(Settings, { className: "w-16 h-16" }),
+          content: (
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur p-6 rounded-2xl border border-white/10">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span className="bg-blue-500 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                    Define Purpose
+                  </h3>
+                  <ul className="space-y-2 text-sm opacity-90">
+                    <li>• Who is this for?</li>
+                    <li>• What do you want to achieve?</li>
+                    <li>• What makes you unique?</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur p-6 rounded-2xl border border-white/10">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span className="bg-purple-500 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                    Gather Content
+                  </h3>
+                  <ul className="space-y-2 text-sm opacity-90">
+                    <li>• Work experience details</li>
+                    <li>• Project descriptions</li>
+                    <li>• Skills & certifications</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gradient-to-br from-pink-500/20 to-red-500/20 backdrop-blur p-6 rounded-2xl border border-white/10">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span className="bg-pink-500 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                    Design Inspiration
+                  </h3>
+                  <ul className="space-y-2 text-sm opacity-90">
+                    <li>• Browse portfolio sites</li>
+                    <li>• Identify aesthetics you like</li>
+                    <li>• Save screenshots for reference</li>
+                  </ul>
+                </div>
+
+                <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur p-6 rounded-2xl border border-white/10">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span className="bg-red-500 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                    Technical Goals
+                  </h3>
+                  <ul className="space-y-2 text-sm opacity-90">
+                    <li>• Single page or multi-page?</li>
+                    <li>• Mobile responsive?</li>
+                    <li>• Contact form needed?</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-yellow-500/20 backdrop-blur border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                <p className="text-sm font-semibold flex items-center gap-2">
+                  {React.createElement(Lightbulb, { className: "w-5 h-5" })}
+                  Pro Tip: Better brief = Better results
+                </p>
+              </div>
+            </div>
+          )
+        },
+        // Add remaining slides following the same pattern...
+        // (Keeping this HTML file concise for demo purposes)
+      ];
+
+      const nextSlide = () => {
+        if (currentSlide < slides.length - 1) {
+          setCurrentSlide(currentSlide + 1);
+        }
+      };
+
+      const prevSlide = () => {
+        if (currentSlide > 0) {
+          setCurrentSlide(currentSlide - 1);
+        }
+      };
+
+      const currentSlideData = slides[currentSlide];
+
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white font-sans">
+          {/* Progress Bar */}
+          <div className="fixed top-0 left-0 right-0 h-1 bg-white/10 z-50">
+            <div
+              className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+
+          {/* Main Content */}
+          <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-8 pt-4">
+              <div className="flex items-center gap-3">
+                <div className="bg-gradient-to-r from-cyan-400 to-blue-600 p-3 rounded-xl">
+                  {React.createElement(Home, { className: "w-6 h-6" })}
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold">Portfolio Tutorial</h1>
+                  <p className="text-sm opacity-60">With Claude AI</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm opacity-60">Slide {currentSlide + 1} of {slides.length}</p>
+              </div>
+            </div>
+
+            {/* Slide Content */}
+            <div className="flex-1 flex items-center justify-center">
+              <div className="w-full max-w-6xl">
+                <div className="mb-8 text-center">
+                  <div className="flex items-center justify-center mb-6 opacity-80">
+                    {currentSlideData.icon}
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    {currentSlideData.title}
+                  </h2>
+                  <p className="text-2xl opacity-70">{currentSlideData.subtitle}</p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
+                  {currentSlideData.content}
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center justify-between mt-8 pb-4">
+              <button
+                onClick={prevSlide}
+                disabled={currentSlide === 0}
+                className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl backdrop-blur transition-all"
+              >
+                {React.createElement(ChevronLeft, { className: "w-5 h-5" })}
+                Previous
+              </button>
+
+              <div className="flex gap-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentSlide
+                        ? 'bg-blue-500 w-8'
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextSlide}
+                disabled={currentSlide === slides.length - 1}
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl backdrop-blur transition-all"
+              >
+                Next
+                {React.createElement(ChevronRight, { className: "w-5 h-5" })}
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Render the app
+    ReactDOM.render(<PortfolioTutorial />, document.getElementById('root'));
+  </script>
+
+  <!-- Instructions Overlay (Press 'H' to toggle) -->
+  <div id="instructions" style="display:none; position:fixed; bottom:20px; left:20px; background:rgba(0,0,0,0.8); color:white; padding:20px; border-radius:10px; font-family:monospace;">
+    <h3 style="margin:0 0 10px 0;">Recording Instructions</h3>
+    <ul style="margin:0; padding-left:20px; line-height:1.6;">
+      <li>Press <strong>→</strong> for next slide</li>
+      <li>Press <strong>←</strong> for previous slide</li>
+      <li>Press <strong>F11</strong> for fullscreen</li>
+      <li>Press <strong>H</strong> to hide this help</li>
+      <li>Click dots to jump to slide</li>
+    </ul>
+    <p style="margin:10px 0 0 0; font-size:12px; opacity:0.7;">
+      💡 Record in fullscreen at 1920x1080 for best quality
+    </p>
+  </div>
+
+  <script>
+    // Toggle instructions with 'H' key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'h' || e.key === 'H') {
+        const instructions = document.getElementById('instructions');
+        instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
+      }
+    });
+
+    // Show instructions on load for 5 seconds
+    setTimeout(() => {
+      document.getElementById('instructions').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('instructions').style.display = 'none';
+      }, 5000);
+    }, 1000);
+  </script>
+</body>
+</html>

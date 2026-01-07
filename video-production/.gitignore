@@ -1,0 +1,89 @@
+# Video Production .gitignore
+
+# Video files (too large for git)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.flv
+*.wmv
+*.m4v
+
+# Audio files
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+*.m4a
+
+# Image files (raw)
+*.psd
+*.ai
+*.xcf
+
+# Thumbnails (generated)
+thumbnails/*.jpg
+thumbnails/*.jpeg
+thumbnails/*.png
+!thumbnails/thumbnail_generator.py
+!thumbnails/README.md
+
+# Processed videos directory
+processed-videos/*
+!processed-videos/.gitkeep
+
+# Raw footage directory
+raw-footage/*
+!raw-footage/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+temp_*
+concat_*.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Metadata (may contain sensitive info)
+metadata/*.json
+metadata/*.yaml
+!metadata/youtube_metadata.py
+!metadata/example_metadata.json
+
+# Assets (can be large)
+assets/intro.mp4
+assets/outro.mp4
+assets/music/*
+!assets/music/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# FFmpeg temp files
+*.ffmpeg_*

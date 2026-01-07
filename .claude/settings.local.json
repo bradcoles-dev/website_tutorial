@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(raw-footage/.gitkeep)",
+      "Bash(processed-videos/.gitkeep)",
+      "Bash(assets/music/.gitkeep)",
+      "Bash(tree:*)",
+      "Bash(project_structure.txt 2)",
+      "Bash(nul)",
+      "Bash(dir:*)",
+      "Bash(project_structure.txt)",
+      "Bash(python:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
